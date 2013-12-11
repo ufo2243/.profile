@@ -1,0 +1,10 @@
+#!/usr/bin/expect -f
+set ip [lindex $argv 0 ]    
+set password XXX
+set timeout 10    
+spawn ssh root@192.168.8.$ip    
+expect {    
+    "*yes/no" { send "yes\r"; exp_continue}  
+    "*password:" { send "$password\r" }    
+}
+interact 
